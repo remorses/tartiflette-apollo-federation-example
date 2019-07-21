@@ -2,8 +2,10 @@
 
 scalar Json
 scalar Url
+scalar ObjectId
 
 type Query {
     stuff: Json
     others(input: Url): Url
+    campaign(_id: ObjectId): ObjectId
 }

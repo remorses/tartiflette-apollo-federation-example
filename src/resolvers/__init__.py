@@ -19,3 +19,8 @@ async def revolve_stuff(_, args, ctx, info):
 async def revolve_others(_, args, ctx, info):
     print(args)
     return args['input']
+
+@Resolver('Query.campaign')
+async def revolve_campaign(_, args, ctx, info):
+    print(args)
+    return args['_id']
