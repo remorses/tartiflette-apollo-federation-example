@@ -5,4 +5,5 @@ scalar Url
 
 type Query {
     stuff: Json
+    others(input: Url): Url
 }

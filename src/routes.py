@@ -9,4 +9,4 @@ routes = web.RouteTableDef()
 async def hello(request):
     return web.Response(text="Hello, world")
 
-routes.static('/uploads/', path='./uploads/')
+# routes.static('/uploads/', path='./uploads/')
