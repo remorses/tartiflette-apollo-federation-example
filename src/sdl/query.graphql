@@ -1,0 +1,8 @@
+
+
+scalar Json
+scalar Url
+
+type Query {
+    stuff: Json
+}
