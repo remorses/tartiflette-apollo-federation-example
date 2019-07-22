@@ -24,3 +24,9 @@ async def revolve_others(_, args, ctx, info):
 async def revolve_campaign(_, args, ctx, info):
     print(args)
     return args['_id']
+
+@Resolver('Query.something')
+async def revolve_some(_, args, ctx, info):
+    return {
+        'ciao': 'asd'
+    }

@@ -9,6 +9,7 @@ import src.scalars
 import aiofiles 
 import asyncio
 from .routes import routes
+from .directive import Test, Require
 
 
 here = os.path.dirname(os.path.abspath(__file__))

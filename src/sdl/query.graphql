@@ -4,8 +4,28 @@ scalar Json
 scalar Url
 scalar ObjectId
 
+directive @Test on FIELD_DEFINITION | ENUM_VALUE
+directive @require(
+    arg: String!
+    equalTo: String!
+    inside: LocationToCheck = OUTPUT
+) on FIELD_DEFINITION
+
+enum LocationToCheck {
+    SESSION
+    OUTPUT
+}
+
 type Query {
-    stuff: Json
+    stuff: Json @Test
     others(input: Url): Url
     campaign(_id: ObjectId): ObjectId
+    something(id: ID): Some @require(arg: "id", equalTo: "ciao", inside: OUTPUT)
+    camapign(id: ID): Some 
+}
+
+
+type Some {
+    ciao: String
+    comeVa: String
 }
