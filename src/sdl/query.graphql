@@ -4,12 +4,13 @@ scalar Json
 scalar Url
 scalar ObjectId
 
-directive @Test on FIELD_DEFINITION | ENUM_VALUE
 directive @require(
-    arg: String!
+    arg: String
+    field: String
     equalTo: String!
-    inside: LocationToCheck = OUTPUT
 ) on FIELD_DEFINITION
+
+directive @needsLogin on FIELD_DEFINITION
 
 enum LocationToCheck {
     SESSION
@@ -17,15 +18,20 @@ enum LocationToCheck {
 }
 
 type Query {
-    stuff: Json @Test
-    others(input: Url): Url
-    campaign(_id: ObjectId): ObjectId
-    something(id: ID): Some @require(arg: "id", equalTo: "ciao", inside: OUTPUT)
-    camapign(id: ID): Some 
+    stuff: Json @needsLogin
+    others(input: Url): Url @needsLogin
+    campaign(id: ObjectId): ObjectId @require(arg: "id", equalTo: "user_id")
+    something(id: ID): Some
+    bo: Bo
 }
 
 
-type Some {
+type Some @require(field: "_id", equalTo: "user_id") {
+    _id: String
     ciao: String
     comeVa: String
+}
+type Bo @require(field: "_id", equalTo: "user_id") {
+    _id: String
+    cose: String
 }

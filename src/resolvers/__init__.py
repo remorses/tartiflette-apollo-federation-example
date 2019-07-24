@@ -28,5 +28,12 @@ async def revolve_campaign(_, args, ctx, info):
 @Resolver('Query.something')
 async def revolve_some(_, args, ctx, info):
     return {
+        '_id': 'xxx',
         'ciao': 'asd'
+    }
+@Resolver('Query.bo')
+async def revolve_bo(_, args, ctx, info):
+    return {
+        '_id': 'vvv',
+        'cose': 'asd'
     }

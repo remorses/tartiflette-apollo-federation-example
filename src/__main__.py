@@ -9,13 +9,22 @@ import src.scalars
 import aiofiles 
 import asyncio
 from .routes import routes
-from .directive import Test, Require
+import src.directive
+
+
+@web.middleware
+async def middleware(request, handler):
+        request.user = {}
+        response = await handler(request)
+        return response
+    
+
 
 
 here = os.path.dirname(os.path.abspath(__file__))
 
 def run():
-    app = web.Application()
+    app = web.Application(middlewares=[middleware])
     db = AsyncIOMotorClient().playdb
     app = register_graphql_handlers(
         app=app,
@@ -40,6 +49,6 @@ def run():
     
     # app.on_startup.append(start_background_tasks)
     # app.on_cleanup.append(cleanup_background_tasks)
-    web.run_app(app, port=8090)
+    web.run_app(app, port=8090,)
 
 run()
