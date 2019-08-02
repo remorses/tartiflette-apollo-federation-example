@@ -8,7 +8,7 @@ directive @require(
     arg: String
     field: String
     equalTo: String!
-) on FIELD_DEFINITION
+) on FIELD_DEFINITION | OBJECT
 
 directive @needsLogin on FIELD_DEFINITION
 
