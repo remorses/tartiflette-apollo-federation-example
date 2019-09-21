@@ -2,21 +2,28 @@ version: '3'
 
 services:
     services:
-        build: ./src
+        build: ./
+        command: |
+            python -m src1 & 
+            python -m src2 &
         expose: 
-            - 8090
+            - 8001
+            - 8002
+        environment:
+            - PYTHONUNBUFFERED=1
     gateway:
         image: xmorse/apollo-federation-gateway
         ports:
             - 8000:80
         environment: 
-            DEFAULT_MAX_AGE: '5'
-            ENGINE_API_KEY: '...'
             CONFIG: |
-                [{
-                    "name": "1",
-                    "url": "http://services:4001"
-                },
-                {   "name": "2",
-                    "url": "http://services:4002"
-                }]
+                [
+                    {
+                        "name": "1",
+                        "url": "http://services:8001/graphql"
+                    },
+                    {
+                        "name": "2",
+                        "url": "http://services:8002/graphql"
+                    }
+                ]

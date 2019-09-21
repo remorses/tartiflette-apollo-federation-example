@@ -1,0 +1,4 @@
+tartiflette==1.0.0rc3
+tartiflette-aiohttp
+tartiflette_scalars
+tartiflette_plugin_apollo_federation

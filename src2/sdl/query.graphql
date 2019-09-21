@@ -1,0 +1,14 @@
+
+type User {
+    name: String
+}
+
+type Human {
+    age: Int
+}
+
+type Query {
+    you: User
+    they: [Human]
+}
+

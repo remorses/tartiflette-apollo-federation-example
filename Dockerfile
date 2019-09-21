@@ -8,10 +8,7 @@ COPY requirements.txt /src/
 
 RUN pip install -r requirements.txt
 
-
 COPY . /src/
 
-
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
-CMD ["python", "-m", "src"]
 
