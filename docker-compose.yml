@@ -3,9 +3,12 @@ version: '3'
 services:
     services:
         build: ./
-        command: |
-            python -m src1 & 
-            python -m src2 &
+        command: | 
+            sh -c '
+                python -m src1 &
+                python -m src2 &
+                sleep 100
+            '
         expose: 
             - 8001
             - 8002
@@ -15,7 +18,7 @@ services:
         image: xmorse/apollo-federation-gateway
         ports:
             - 8000:80
-        environment: 
+        environment:
             CONFIG: |
                 [
                     {
