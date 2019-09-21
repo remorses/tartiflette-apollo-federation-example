@@ -7,6 +7,10 @@ type Human {
     age: Int
 }
 
+extend type Human {
+    birth: String
+}
+
 type Query {
     you: User
     they: [Human]
