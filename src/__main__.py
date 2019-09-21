@@ -6,7 +6,6 @@ import aiohttp_cors
 from tartiflette_aiohttp import register_graphql_handlers
 import src.resolvers
 import src.scalars
-import aiofiles 
 import asyncio
 from .routes import routes
 import src.directive

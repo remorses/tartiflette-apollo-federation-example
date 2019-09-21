@@ -1,0 +1,4 @@
+motor
+tartiflette==1.0.0rc3
+tartiflette-aiohttp
+aiohttp-cors

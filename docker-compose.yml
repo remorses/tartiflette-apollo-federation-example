@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+    services:
+        build: ./src
+        expose: 
+            - 8090
+    gateway:
+        image: xmorse/apollo-federation-gateway
+        ports:
+            - 8000:80
+        environment: 
+            DEFAULT_MAX_AGE: '5'
+            ENGINE_API_KEY: '...'
+            CONFIG: |
+                [{
+                    "name": "1",
+                    "url": "http://services:4001"
+                },
+                {   "name": "2",
+                    "url": "http://services:4002"
+                }]
