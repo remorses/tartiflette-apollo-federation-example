@@ -11,7 +11,6 @@ import asyncio
 from .routes import routes
 import src.directive
 
-
 @web.middleware
 async def middleware(request, handler):
         request.user = {}

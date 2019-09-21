@@ -3,7 +3,9 @@ import aiofiles
 import os
 import urllib.parse
 
+
 routes = web.RouteTableDef()
+
 
 @routes.get('/')
 async def hello(request):

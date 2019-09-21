@@ -1,8 +1,7 @@
 
 
 scalar Json
-scalar Url
-scalar ObjectId
+
 
 directive @require(
     arg: String
@@ -12,26 +11,11 @@ directive @require(
 
 directive @needsLogin on FIELD_DEFINITION
 
-enum LocationToCheck {
-    SESSION
-    OUTPUT
+type User  {
+    name: String
 }
 
 type Query {
-    stuff: Json @needsLogin
-    others(input: Url): Url @needsLogin
-    campaign(id: ObjectId): ObjectId @require(arg: "id", equalTo: "user_id")
-    something(id: ID): Some
-    bo: Bo
+    me: User
 }
 
-
-type Some @require(field: "_id", equalTo: "user_id") {
-    _id: String
-    ciao: String
-    comeVa: String
-}
-type Bo @require(field: "_id", equalTo: "user_id") {
-    _id: String
-    cose: String
-}

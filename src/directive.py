@@ -59,6 +59,7 @@ class Require:
 
 
 
+
 @Directive("needsLogin")
 class NeedsLogin:
     @staticmethod
